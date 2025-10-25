@@ -1,6 +1,7 @@
 // User Roles
 export enum UserRole {
   User = 'User',
+  Customer = 'Customer',
   Vendor = 'Vendor',
   Admin = 'Admin',
   Delivery = 'Delivery'
@@ -37,6 +38,16 @@ export enum PaymentMethod {
   UPI = 'UPI',
   NetBanking = 'NetBanking',
   Wallet = 'Wallet'
+}
+
+// Payment Status
+export enum PaymentStatus {
+  Pending = 'Pending',
+  Processing = 'Processing',
+  Success = 'Success',
+  Failed = 'Failed',
+  Cancelled = 'Cancelled',
+  Refunded = 'Refunded'
 }
 
 // Cuisine Type

@@ -1,4 +1,4 @@
-import { api } from './api'
+import api from './api'
 import { PaymentRequest, UPIQRRequest, PaymentResponse, RefundRequest, PaymentProvider, PaymentConfiguration } from '../types'
 
 export class PaymentService {
