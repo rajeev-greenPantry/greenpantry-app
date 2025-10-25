@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Clock, Percent, Tag, Star, MapPin, Phone } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Clock, Star, MapPin } from 'lucide-react'
 
 const OffersPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')

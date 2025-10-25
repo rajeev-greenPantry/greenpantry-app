@@ -3,7 +3,7 @@ import { MapPin, Clock, Star, Filter, Search, Navigation } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const NearbyPage = () => {
-  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null)
+  const [, setUserLocation] = useState<{lat: number, lng: number} | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState('distance')
 
@@ -251,8 +251,11 @@ const NearbyPage = () => {
                     <div className="flex space-x-3">
                       <Link
                         to={`/restaurants/${restaurant.id}`}
-                        className="px-6 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                        disabled={!restaurant.isOpen}
+                        className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+                          restaurant.isOpen 
+                            ? 'bg-green-600 text-white hover:bg-green-700' 
+                            : 'bg-gray-400 text-white cursor-not-allowed'
+                        }`}
                       >
                         {restaurant.isOpen ? 'View Menu' : 'Closed'}
                       </Link>

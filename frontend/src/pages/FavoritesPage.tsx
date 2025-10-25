@@ -201,13 +201,13 @@ const FavoritesPage = () => {
                         <div className="flex items-center">
                           <Clock className="w-4 h-4 text-gray-500 mr-1" />
                           <span className="text-sm text-gray-600 dark:text-gray-300">
-                            {item.deliveryTime}
+                            {'deliveryTime' in item ? item.deliveryTime : 'N/A'}
                           </span>
                         </div>
                         <div className="flex items-center">
                           <MapPin className="w-4 h-4 text-gray-500 mr-1" />
                           <span className="text-sm text-gray-600 dark:text-gray-300">
-                            {item.distance}
+                            {'distance' in item ? item.distance : 'N/A'}
                           </span>
                         </div>
                       </div>
@@ -215,7 +215,7 @@ const FavoritesPage = () => {
                     
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-600 dark:text-gray-300">
-                        Delivery Fee: ₹{item.deliveryFee}
+                        Delivery Fee: ₹{'deliveryFee' in item ? item.deliveryFee : 'N/A'}
                       </span>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         (item as any).isOpen 
@@ -229,10 +229,10 @@ const FavoritesPage = () => {
                 ) : (
                   <>
                     <p className="text-gray-600 dark:text-gray-300 mb-2">
-                      {item.restaurant} • {item.category}
+                      {'restaurant' in item ? item.restaurant : 'N/A'} • {'category' in item ? item.category : 'N/A'}
                     </p>
                     <p className="text-lg font-semibold text-green-600 dark:text-green-400 mb-4">
-                      ₹{item.price}
+                      ₹{'price' in item ? item.price : 'N/A'}
                     </p>
                   </>
                 )}

@@ -1,36 +1,36 @@
-import api from './api'
+import apiService from './api'
 import { PaymentRequest, UPIQRRequest, PaymentResponse, RefundRequest, PaymentProvider, PaymentConfiguration } from '../types'
 
 export class PaymentService {
   private baseUrl = '/api/payment'
 
   async createPayment(request: PaymentRequest): Promise<PaymentResponse> {
-    const response = await api.post(`${this.baseUrl}/create`, request)
+    const response = await apiService.getApiInstance().post(`${this.baseUrl}/create`, request)
     return response.data
   }
 
   async generateUPIQR(request: UPIQRRequest): Promise<PaymentResponse> {
-    const response = await api.post(`${this.baseUrl}/upi-qr`, request)
+    const response = await apiService.getApiInstance().post(`${this.baseUrl}/upi-qr`, request)
     return response.data
   }
 
   async getPaymentStatus(paymentId: string, provider: PaymentProvider): Promise<PaymentResponse> {
-    const response = await api.get(`${this.baseUrl}/status/${paymentId}?provider=${provider}`)
+    const response = await apiService.getApiInstance().get(`${this.baseUrl}/status/${paymentId}?provider=${provider}`)
     return response.data
   }
 
   async processRefund(request: RefundRequest): Promise<PaymentResponse> {
-    const response = await api.post(`${this.baseUrl}/refund`, request)
+    const response = await apiService.getApiInstance().post(`${this.baseUrl}/refund`, request)
     return response.data
   }
 
   async getEnabledProviders(): Promise<PaymentProvider[]> {
-    const response = await api.get(`${this.baseUrl}/providers`)
+    const response = await apiService.getApiInstance().get(`${this.baseUrl}/providers`)
     return response.data
   }
 
   async getPaymentConfiguration(provider: PaymentProvider): Promise<PaymentConfiguration> {
-    const response = await api.get(`${this.baseUrl}/config/${provider}`)
+    const response = await apiService.getApiInstance().get(`${this.baseUrl}/config/${provider}`)
     return response.data
   }
 
