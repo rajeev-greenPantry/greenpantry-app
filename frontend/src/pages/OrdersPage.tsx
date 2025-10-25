@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Clock, MapPin, Star, Repeat, Eye, Filter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 

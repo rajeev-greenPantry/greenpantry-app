@@ -1,5 +1,4 @@
-import React from 'react'
-import { Linkedin, Twitter, Mail, MapPin, Users, Award, Heart } from 'lucide-react'
+import { Linkedin, Twitter, Mail, Users, Award, Heart } from 'lucide-react'
 
 const TeamPage = () => {
   const teamMembers = [

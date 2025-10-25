@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import { User } from '../types'
+import { User, UserRole } from '../types'
 
 interface AuthContextType {
   user: User | null
@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsLoading(false)
   }, [])
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, _password: string) => {
     setIsLoading(true)
     try {
       // TODO: Implement actual login API call
@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         lastName: 'Doe',
         email: email,
         phoneNumber: '+919876543210',
-        role: 'Customer',
+        role: UserRole.Customer,
         isEmailVerified: true,
         address: {
           street: '123 Main Street',

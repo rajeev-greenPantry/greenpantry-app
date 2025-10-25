@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { X, ChefHat } from 'lucide-react'
 import MenuItem from './MenuItem'
 import { Restaurant } from '../types'

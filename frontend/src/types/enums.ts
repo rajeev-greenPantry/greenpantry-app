@@ -47,7 +47,8 @@ export enum PaymentStatus {
   Success = 'Success',
   Failed = 'Failed',
   Cancelled = 'Cancelled',
-  Refunded = 'Refunded'
+  Refunded = 'Refunded',
+  PartiallyRefunded = 'PartiallyRefunded'
 }
 
 // Cuisine Type

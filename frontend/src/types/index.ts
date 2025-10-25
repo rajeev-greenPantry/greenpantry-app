@@ -1,4 +1,6 @@
-import { UserRole } from './enums'
+import { UserRole, PaymentStatus } from './enums'
+
+export { UserRole, PaymentStatus }
 
 // User Types
 export interface User {
@@ -228,15 +230,6 @@ export enum PaymentProvider {
   PhonePe = 'PhonePe'
 }
 
-export enum PaymentStatus {
-  Pending = 'Pending',
-  Processing = 'Processing',
-  Success = 'Success',
-  Failed = 'Failed',
-  Cancelled = 'Cancelled',
-  Refunded = 'Refunded',
-  PartiallyRefunded = 'PartiallyRefunded'
-}
 
 export interface PaymentRequest {
   orderId: string

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Calendar, ExternalLink, Download, Mail, Phone, MapPin } from 'lucide-react'
 
 const PressPage = () => {

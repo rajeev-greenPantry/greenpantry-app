@@ -187,7 +187,7 @@ const FavoritesPage = () => {
                       {(item as any).cuisine} • {(item as any).priceRange}
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                      {item.address}
+                      {'address' in item ? item.address : 'N/A'}
                     </p>
                     
                     <div className="flex items-center justify-between mb-4">
@@ -195,7 +195,7 @@ const FavoritesPage = () => {
                         <div className="flex items-center">
                           <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
                           <span className="text-sm font-medium text-gray-900 dark:text-white">
-                            {item.rating}
+                            {'rating' in item ? item.rating : 'N/A'}
                           </span>
                         </div>
                         <div className="flex items-center">

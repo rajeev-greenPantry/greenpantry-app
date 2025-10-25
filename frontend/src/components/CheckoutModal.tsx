@@ -4,7 +4,7 @@ import { PaymentMethodSelector } from './PaymentMethodSelector'
 import { PaymentProvider, PaymentResponse } from '../types'
 import { useCart } from '../contexts/CartContext'
 import { useAuthStore } from '../store/authStore'
-import { X, CreditCard, Smartphone, QrCode, Clock, MapPin, User, Phone, Mail } from 'lucide-react'
+import { X, MapPin } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 
 interface CheckoutModalProps {
@@ -33,7 +33,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [currentStep, setCurrentStep] = useState<'address' | 'payment' | 'processing'>('address')
   const [selectedMethod, setSelectedMethod] = useState<string>('')
   const [selectedProvider, setSelectedProvider] = useState<PaymentProvider | undefined>()
-  const [isProcessing, setIsProcessing] = useState(false)
+  const [, setIsProcessing] = useState(false)
   const [orderId, setOrderId] = useState<string>('')
   
   // Address form state

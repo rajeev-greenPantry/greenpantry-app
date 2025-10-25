@@ -39,6 +39,11 @@ class ApiService {
     return this.api
   }
 
+  // Public method for external services to make requests
+  public getAxiosInstance(): AxiosInstance {
+    return this.getApiInstance()
+  }
+
   private setupInterceptors() {
     if (!this.api) return
 

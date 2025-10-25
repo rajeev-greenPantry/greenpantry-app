@@ -1,4 +1,3 @@
-import React from 'react'
 import { Shield, Eye, Lock, Database, User, Mail, Phone } from 'lucide-react'
 
 const PrivacyPage = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PaymentProvider, PaymentResponse } from '../types'
+import { PaymentProvider, PaymentResponse, PaymentStatus } from '../types'
 import { PaymentMethodSelector } from './PaymentMethodSelector'
 import { UPIQRPayment } from './UPIQRPayment'
 import { X, ArrowLeft } from 'lucide-react'
@@ -23,14 +23,14 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   orderId,
   amount,
   customerName,
-  customerEmail,
+  customerEmail: _customerEmail,
   customerPhone,
   description,
   onPaymentSuccess,
   onPaymentFailed
 }) => {
   const [selectedMethod, setSelectedMethod] = useState<string>('')
-  const [selectedProvider, setSelectedProvider] = useState<PaymentProvider | undefined>()
+  const [, setSelectedProvider] = useState<PaymentProvider | undefined>()
   const [currentStep, setCurrentStep] = useState<'method' | 'payment'>('method')
 
   if (!isOpen) return null
@@ -47,7 +47,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
         paymentId: `cod_${orderId}`,
         orderId,
         provider: PaymentProvider.Razorpay, // Dummy provider for COD
-        status: 'Success',
+        status: PaymentStatus.Success,
         amount,
         currency: 'INR',
         providerTransactionId: `cod_${orderId}`

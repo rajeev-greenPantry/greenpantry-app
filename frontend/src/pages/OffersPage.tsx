@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Clock, Star, MapPin } from 'lucide-react'
+import { useState } from 'react'
+import { Clock } from 'lucide-react'
 
 const OffersPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')

@@ -1,5 +1,4 @@
-import React from 'react'
-import { FileText, AlertTriangle, Scale, Users, CreditCard, Shield } from 'lucide-react'
+import { FileText, AlertTriangle, Scale, Users, CreditCard } from 'lucide-react'
 
 const TermsPage = () => {
   return (

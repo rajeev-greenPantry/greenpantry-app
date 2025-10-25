@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Search, ChevronDown, ChevronUp, MessageCircle, Phone, Mail, Clock } from 'lucide-react'
 
 const HelpPage = () => {
