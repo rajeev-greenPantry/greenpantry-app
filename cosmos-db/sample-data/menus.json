@@ -1,0 +1,862 @@
+[
+  {
+    "id": "menu-1",
+    "restaurantId": "restaurant-1",
+    "name": "Chicken Biryani",
+    "description": "Fragrant basmati rice cooked with tender chicken pieces, aromatic spices, and saffron",
+    "price": 350,
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03246963d4d4?w=400",
+    "category": "Main Course",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": true,
+    "spiceLevel": 3,
+    "allergens": ["Dairy"],
+    "ingredients": ["Basmati Rice", "Chicken", "Onions", "Yogurt", "Saffron", "Cardamom", "Cinnamon"],
+    "preparationTime": 45,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Extra Spicy",
+        "priceModifier": 20,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Popular", "Spicy", "Traditional"],
+    "createdAt": "2024-01-10T09:15:00Z",
+    "updatedAt": "2024-01-10T09:15:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-2",
+    "restaurantId": "restaurant-1",
+    "name": "Dal Makhani",
+    "description": "Creamy black lentils slow-cooked with butter and cream, served with naan",
+    "price": 280,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+    "category": "Main Course",
+    "isVegetarian": true,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 1,
+    "allergens": ["Dairy"],
+    "ingredients": ["Black Lentils", "Butter", "Cream", "Tomatoes", "Onions", "Ginger", "Garlic"],
+    "preparationTime": 30,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Vegetarian", "Creamy", "Comfort Food"],
+    "createdAt": "2024-01-10T09:15:00Z",
+    "updatedAt": "2024-01-10T09:15:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-3",
+    "restaurantId": "restaurant-2",
+    "name": "Chicken Manchurian",
+    "description": "Crispy chicken balls in tangy Manchurian sauce with spring onions and bell peppers",
+    "price": 320,
+    "imageUrl": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400",
+    "category": "Main Course",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": ["Soy", "Wheat"],
+    "ingredients": ["Chicken", "Cornflour", "Soy Sauce", "Spring Onions", "Bell Peppers", "Ginger", "Garlic"],
+    "preparationTime": 25,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Dry",
+        "priceModifier": 0,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Indo-Chinese", "Crispy", "Tangy"],
+    "createdAt": "2024-01-12T14:20:00Z",
+    "updatedAt": "2024-01-12T14:20:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-4",
+    "restaurantId": "restaurant-3",
+    "name": "Margherita Pizza",
+    "description": "Classic wood-fired pizza with fresh mozzarella, tomato sauce, and basil leaves",
+    "price": 450,
+    "imageUrl": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400",
+    "category": "Pizza",
+    "isVegetarian": true,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Gluten", "Dairy"],
+    "ingredients": ["Pizza Dough", "Mozzarella", "Tomato Sauce", "Basil", "Olive Oil"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular (10 inch)",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Large (12 inch)",
+        "priceModifier": 100,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Classic", "Vegetarian", "Wood-fired"],
+    "createdAt": "2024-01-08T16:30:00Z",
+    "updatedAt": "2024-01-08T16:30:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-5",
+    "restaurantId": "restaurant-4",
+    "name": "Pad Thai",
+    "description": "Stir-fried rice noodles with shrimp, tofu, bean sprouts, and peanuts in tamarind sauce",
+    "price": 380,
+    "imageUrl": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400",
+    "category": "Noodles",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": ["Peanuts", "Soy", "Fish"],
+    "ingredients": ["Rice Noodles", "Shrimp", "Tofu", "Bean Sprouts", "Peanuts", "Tamarind", "Fish Sauce"],
+    "preparationTime": 20,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Vegetarian",
+        "priceModifier": -50,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Thai", "Noodles", "Stir-fried"],
+    "createdAt": "2024-01-14T11:45:00Z",
+    "updatedAt": "2024-01-14T11:45:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-6",
+    "restaurantId": "restaurant-5",
+    "name": "Classic Cheeseburger",
+    "description": "Juicy beef patty with melted cheese, lettuce, tomato, and our special sauce",
+    "price": 250,
+    "imageUrl": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400",
+    "category": "Burgers",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Gluten", "Dairy"],
+    "ingredients": ["Beef Patty", "Cheddar Cheese", "Lettuce", "Tomato", "Onion", "Pickles", "Burger Bun"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Single Patty",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Double Patty",
+        "priceModifier": 80,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Classic", "Beef", "Cheese"],
+    "createdAt": "2024-01-18T13:20:00Z",
+    "updatedAt": "2024-01-18T13:20:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-7",
+    "restaurantId": "restaurant-1",
+    "name": "Butter Chicken",
+    "description": "Tender chicken pieces in rich tomato and cream sauce with aromatic spices",
+    "price": 320,
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03246963d4d4?w=400",
+    "category": "Main Course",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 1,
+    "allergens": ["Dairy"],
+    "ingredients": ["Chicken", "Tomatoes", "Cream", "Butter", "Onions", "Ginger", "Garlic", "Spices"],
+    "preparationTime": 25,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Popular", "Creamy", "Mild"],
+    "createdAt": "2024-01-10T09:15:00Z",
+    "updatedAt": "2024-01-10T09:15:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-8",
+    "restaurantId": "restaurant-1",
+    "name": "Naan Bread",
+    "description": "Freshly baked soft naan bread, perfect with curries",
+    "price": 60,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+    "category": "Bread",
+    "isVegetarian": true,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Gluten", "Dairy"],
+    "ingredients": ["Flour", "Yogurt", "Ghee", "Salt"],
+    "preparationTime": 10,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Plain",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Garlic",
+        "priceModifier": 20,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Bread", "Fresh", "Traditional"],
+    "createdAt": "2024-01-10T09:15:00Z",
+    "updatedAt": "2024-01-10T09:15:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-9",
+    "restaurantId": "restaurant-2",
+    "name": "Sweet and Sour Chicken",
+    "description": "Crispy chicken pieces in tangy sweet and sour sauce with bell peppers and pineapple",
+    "price": 280,
+    "imageUrl": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400",
+    "category": "Main Course",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 1,
+    "allergens": ["Soy", "Wheat"],
+    "ingredients": ["Chicken", "Bell Peppers", "Pineapple", "Vinegar", "Sugar", "Soy Sauce", "Cornflour"],
+    "preparationTime": 20,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Sweet", "Tangy", "Crispy"],
+    "createdAt": "2024-01-12T14:20:00Z",
+    "updatedAt": "2024-01-12T14:20:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-10",
+    "restaurantId": "restaurant-2",
+    "name": "Fried Rice",
+    "description": "Fragrant jasmine rice stir-fried with vegetables, eggs, and soy sauce",
+    "price": 200,
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03246963d4d4?w=400",
+    "category": "Rice",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Soy", "Eggs"],
+    "ingredients": ["Jasmine Rice", "Eggs", "Carrots", "Peas", "Spring Onions", "Soy Sauce", "Oil"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Vegetarian",
+        "priceModifier": -30,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Rice", "Stir-fried", "Classic"],
+    "createdAt": "2024-01-12T14:20:00Z",
+    "updatedAt": "2024-01-12T14:20:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-11",
+    "restaurantId": "restaurant-3",
+    "name": "Spaghetti Carbonara",
+    "description": "Classic Italian pasta with eggs, cheese, pancetta, and black pepper",
+    "price": 420,
+    "imageUrl": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400",
+    "category": "Pasta",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Gluten", "Dairy", "Eggs"],
+    "ingredients": ["Spaghetti", "Pancetta", "Eggs", "Parmesan", "Black Pepper", "Olive Oil"],
+    "preparationTime": 20,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Classic", "Creamy", "Italian"],
+    "createdAt": "2024-01-08T16:30:00Z",
+    "updatedAt": "2024-01-08T16:30:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-12",
+    "restaurantId": "restaurant-3",
+    "name": "Caesar Salad",
+    "description": "Fresh romaine lettuce with croutons, parmesan cheese, and creamy caesar dressing",
+    "price": 280,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+    "category": "Salad",
+    "isVegetarian": true,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Dairy", "Gluten"],
+    "ingredients": ["Romaine Lettuce", "Croutons", "Parmesan", "Caesar Dressing", "Lemon"],
+    "preparationTime": 10,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "With Chicken",
+        "priceModifier": 80,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Fresh", "Healthy", "Classic"],
+    "createdAt": "2024-01-08T16:30:00Z",
+    "updatedAt": "2024-01-08T16:30:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-13",
+    "restaurantId": "restaurant-4",
+    "name": "Tom Yum Soup",
+    "description": "Spicy and sour soup with shrimp, mushrooms, lemongrass, and lime leaves",
+    "price": 250,
+    "imageUrl": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400",
+    "category": "Soup",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": true,
+    "spiceLevel": 3,
+    "allergens": ["Fish", "Shellfish"],
+    "ingredients": ["Shrimp", "Mushrooms", "Lemongrass", "Lime Leaves", "Chili", "Fish Sauce", "Lime"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Vegetarian",
+        "priceModifier": -30,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Spicy", "Sour", "Traditional"],
+    "createdAt": "2024-01-14T11:45:00Z",
+    "updatedAt": "2024-01-14T11:45:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-14",
+    "restaurantId": "restaurant-4",
+    "name": "Green Curry",
+    "description": "Creamy coconut curry with chicken, eggplant, and Thai basil",
+    "price": 320,
+    "imageUrl": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400",
+    "category": "Curry",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": ["Coconut"],
+    "ingredients": ["Chicken", "Coconut Milk", "Green Curry Paste", "Eggplant", "Thai Basil", "Fish Sauce"],
+    "preparationTime": 25,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Creamy", "Spicy", "Traditional"],
+    "createdAt": "2024-01-14T11:45:00Z",
+    "updatedAt": "2024-01-14T11:45:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-15",
+    "restaurantId": "restaurant-5",
+    "name": "BBQ Bacon Burger",
+    "description": "Juicy beef patty with crispy bacon, BBQ sauce, cheddar cheese, and onion rings",
+    "price": 320,
+    "imageUrl": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400",
+    "category": "Burgers",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Gluten", "Dairy"],
+    "ingredients": ["Beef Patty", "Bacon", "BBQ Sauce", "Cheddar Cheese", "Onion Rings", "Lettuce", "Burger Bun"],
+    "preparationTime": 18,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Single Patty",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Double Patty",
+        "priceModifier": 100,
+        "isDefault": false
+      }
+    ],
+    "tags": ["BBQ", "Bacon", "Premium"],
+    "createdAt": "2024-01-18T13:20:00Z",
+    "updatedAt": "2024-01-18T13:20:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-16",
+    "restaurantId": "restaurant-5",
+    "name": "Chicken Wings",
+    "description": "Crispy chicken wings with your choice of sauce - Buffalo, BBQ, or Honey Mustard",
+    "price": 280,
+    "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+    "category": "Appetizers",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": ["Dairy"],
+    "ingredients": ["Chicken Wings", "Hot Sauce", "Butter", "Celery", "Blue Cheese Dip"],
+    "preparationTime": 20,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Buffalo",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "BBQ",
+        "priceModifier": 0,
+        "isDefault": false
+      },
+      {
+        "name": "Honey Mustard",
+        "priceModifier": 0,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Spicy", "Crispy", "Appetizer"],
+    "createdAt": "2024-01-18T13:20:00Z",
+    "updatedAt": "2024-01-18T13:20:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-17",
+    "restaurantId": "restaurant-6",
+    "name": "Salmon Sashimi",
+    "description": "Fresh Atlantic salmon sashimi, sliced thin and served with wasabi and soy sauce",
+    "price": 450,
+    "imageUrl": "https://images.unsplash.com/photo-1579584421775-5c4d86c6a034?w=400",
+    "category": "Sashimi",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Fish", "Soy"],
+    "ingredients": ["Fresh Salmon", "Wasabi", "Soy Sauce", "Pickled Ginger"],
+    "preparationTime": 10,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular (6 pieces)",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Large (10 pieces)",
+        "priceModifier": 150,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Fresh", "Raw", "Premium"],
+    "createdAt": "2024-01-20T10:30:00Z",
+    "updatedAt": "2024-01-20T10:30:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-18",
+    "restaurantId": "restaurant-6",
+    "name": "California Roll",
+    "description": "Crab, avocado, and cucumber roll with sesame seeds and wasabi",
+    "price": 320,
+    "imageUrl": "https://images.unsplash.com/photo-1563612116625-3012372fccce?w=400",
+    "category": "Sushi",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Crab", "Sesame", "Soy"],
+    "ingredients": ["Sushi Rice", "Crab", "Avocado", "Cucumber", "Sesame Seeds", "Nori"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular (8 pieces)",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Roll", "Creamy", "Popular"],
+    "createdAt": "2024-01-20T10:30:00Z",
+    "updatedAt": "2024-01-20T10:30:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-19",
+    "restaurantId": "restaurant-7",
+    "name": "Coq au Vin",
+    "description": "Classic French chicken braised in red wine with mushrooms and pearl onions",
+    "price": 580,
+    "imageUrl": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400",
+    "category": "Main Course",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Alcohol"],
+    "ingredients": ["Chicken", "Red Wine", "Mushrooms", "Pearl Onions", "Bacon", "Herbs", "Butter"],
+    "preparationTime": 60,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Classic", "Wine", "Elegant"],
+    "createdAt": "2024-01-22T14:15:00Z",
+    "updatedAt": "2024-01-22T14:15:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-20",
+    "restaurantId": "restaurant-7",
+    "name": "Croissant",
+    "description": "Freshly baked buttery croissant, perfect for breakfast or as a side",
+    "price": 120,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+    "category": "Pastry",
+    "isVegetarian": true,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Gluten", "Dairy", "Eggs"],
+    "ingredients": ["Flour", "Butter", "Yeast", "Salt", "Sugar"],
+    "preparationTime": 5,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Plain",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Chocolate",
+        "priceModifier": 30,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Buttery", "Fresh", "Classic"],
+    "createdAt": "2024-01-22T14:15:00Z",
+    "updatedAt": "2024-01-22T14:15:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-21",
+    "restaurantId": "restaurant-8",
+    "name": "Chicken Tacos",
+    "description": "Soft corn tortillas filled with seasoned chicken, lettuce, tomatoes, and cheese",
+    "price": 180,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+    "category": "Tacos",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": ["Dairy"],
+    "ingredients": ["Corn Tortillas", "Chicken", "Lettuce", "Tomatoes", "Cheese", "Cilantro", "Lime"],
+    "preparationTime": 12,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular (3 tacos)",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Large (5 tacos)",
+        "priceModifier": 80,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Spicy", "Fresh", "Traditional"],
+    "createdAt": "2024-01-25T16:45:00Z",
+    "updatedAt": "2024-01-25T16:45:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-22",
+    "restaurantId": "restaurant-8",
+    "name": "Beef Burrito",
+    "description": "Large flour tortilla filled with seasoned beef, rice, beans, cheese, and salsa",
+    "price": 250,
+    "imageUrl": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400",
+    "category": "Burritos",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": ["Gluten", "Dairy"],
+    "ingredients": ["Flour Tortilla", "Beef", "Rice", "Beans", "Cheese", "Salsa", "Sour Cream"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Hearty", "Spicy", "Filling"],
+    "createdAt": "2024-01-25T16:45:00Z",
+    "updatedAt": "2024-01-25T16:45:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-23",
+    "restaurantId": "restaurant-9",
+    "name": "Hummus",
+    "description": "Creamy chickpea dip with tahini, olive oil, and pita bread",
+    "price": 180,
+    "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400",
+    "category": "Appetizers",
+    "isVegetarian": true,
+    "isVegan": true,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Sesame", "Gluten"],
+    "ingredients": ["Chickpeas", "Tahini", "Olive Oil", "Lemon", "Garlic", "Pita Bread"],
+    "preparationTime": 10,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Healthy", "Creamy", "Traditional"],
+    "createdAt": "2024-01-28T12:00:00Z",
+    "updatedAt": "2024-01-28T12:00:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-24",
+    "restaurantId": "restaurant-9",
+    "name": "Greek Salad",
+    "description": "Fresh tomatoes, cucumbers, olives, feta cheese, and olive oil dressing",
+    "price": 220,
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03246963d4d4?w=400",
+    "category": "Salad",
+    "isVegetarian": true,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Dairy"],
+    "ingredients": ["Tomatoes", "Cucumbers", "Olives", "Feta Cheese", "Olive Oil", "Oregano"],
+    "preparationTime": 8,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Fresh", "Healthy", "Mediterranean"],
+    "createdAt": "2024-01-28T12:00:00Z",
+    "updatedAt": "2024-01-28T12:00:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-25",
+    "restaurantId": "restaurant-10",
+    "name": "Smoked Ribs",
+    "description": "Slow-smoked pork ribs with BBQ sauce, served with coleslaw and fries",
+    "price": 650,
+    "imageUrl": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400",
+    "category": "BBQ",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 1,
+    "allergens": [],
+    "ingredients": ["Pork Ribs", "BBQ Sauce", "Spices", "Coleslaw", "Fries"],
+    "preparationTime": 45,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Half Rack",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Full Rack",
+        "priceModifier": 200,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Smoked", "Tender", "Signature"],
+    "createdAt": "2024-01-30T18:30:00Z",
+    "updatedAt": "2024-01-30T18:30:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "menu-26",
+    "restaurantId": "restaurant-10",
+    "name": "Pulled Pork Sandwich",
+    "description": "Slow-cooked pulled pork with BBQ sauce on a brioche bun, served with fries",
+    "price": 380,
+    "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+    "category": "Sandwiches",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 1,
+    "allergens": ["Gluten"],
+    "ingredients": ["Pulled Pork", "BBQ Sauce", "Brioche Bun", "Coleslaw", "Fries"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Tender", "Smoky", "Hearty"],
+    "createdAt": "2024-01-30T18:30:00Z",
+    "updatedAt": "2024-01-30T18:30:00Z",
+    "isDeleted": false
+  }
+]

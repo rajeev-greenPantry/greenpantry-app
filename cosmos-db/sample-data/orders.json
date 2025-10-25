@@ -1,0 +1,209 @@
+[
+  {
+    "id": "order-1",
+    "userId": "user-1",
+    "restaurantId": "restaurant-1",
+    "orderNumber": "GP20240115001",
+    "status": "Delivered",
+    "items": [
+      {
+        "menuItemId": "menu-1",
+        "menuItemName": "Chicken Biryani",
+        "quantity": 2,
+        "unitPrice": 350,
+        "totalPrice": 700,
+        "variant": "Regular",
+        "specialInstructions": "Extra raita on the side"
+      },
+      {
+        "menuItemId": "menu-2",
+        "menuItemName": "Dal Makhani",
+        "quantity": 1,
+        "unitPrice": 280,
+        "totalPrice": 280,
+        "variant": "Regular",
+        "specialInstructions": ""
+      }
+    ],
+    "subTotal": 980,
+    "deliveryFee": 50,
+    "tax": 185.4,
+    "total": 1215.4,
+    "deliveryAddress": {
+      "street": "123 MG Road",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "postalCode": "400001",
+      "country": "India",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    "paymentMethod": "UPI",
+    "paymentId": "pay_123456789",
+    "estimatedDeliveryTime": "2024-01-15T11:30:00Z",
+    "deliveredAt": "2024-01-15T11:25:00Z",
+    "deliveryInstructions": "Ring the doorbell twice",
+    "deliveryPersonId": "delivery-1",
+    "statusHistory": [
+      {
+        "status": "Pending",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "notes": "Order created",
+        "updatedBy": "user-1"
+      },
+      {
+        "status": "Confirmed",
+        "timestamp": "2024-01-15T10:32:00Z",
+        "notes": "Order confirmed by restaurant",
+        "updatedBy": "restaurant-1"
+      },
+      {
+        "status": "Preparing",
+        "timestamp": "2024-01-15T10:35:00Z",
+        "notes": "Food preparation started",
+        "updatedBy": "restaurant-1"
+      },
+      {
+        "status": "ReadyForDelivery",
+        "timestamp": "2024-01-15T11:15:00Z",
+        "notes": "Order ready for pickup",
+        "updatedBy": "restaurant-1"
+      },
+      {
+        "status": "OutForDelivery",
+        "timestamp": "2024-01-15T11:20:00Z",
+        "notes": "Order picked up by delivery person",
+        "updatedBy": "delivery-1"
+      },
+      {
+        "status": "Delivered",
+        "timestamp": "2024-01-15T11:25:00Z",
+        "notes": "Order delivered successfully",
+        "updatedBy": "delivery-1"
+      }
+    ],
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T11:25:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "order-2",
+    "userId": "user-2",
+    "restaurantId": "restaurant-3",
+    "orderNumber": "GP20240116002",
+    "status": "Preparing",
+    "items": [
+      {
+        "menuItemId": "menu-4",
+        "menuItemName": "Margherita Pizza",
+        "quantity": 1,
+        "unitPrice": 450,
+        "totalPrice": 450,
+        "variant": "Large (12 inch)",
+        "specialInstructions": "Extra cheese"
+      }
+    ],
+    "subTotal": 550,
+    "deliveryFee": 60,
+    "tax": 109.8,
+    "total": 719.8,
+    "deliveryAddress": {
+      "street": "456 Brigade Road",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "postalCode": "560001",
+      "country": "India",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    "paymentMethod": "CreditCard",
+    "paymentId": "pay_987654321",
+    "estimatedDeliveryTime": "2024-01-16T13:30:00Z",
+    "deliveredAt": null,
+    "deliveryInstructions": "Leave at reception",
+    "deliveryPersonId": "",
+    "statusHistory": [
+      {
+        "status": "Pending",
+        "timestamp": "2024-01-16T12:45:00Z",
+        "notes": "Order created",
+        "updatedBy": "user-2"
+      },
+      {
+        "status": "Confirmed",
+        "timestamp": "2024-01-16T12:47:00Z",
+        "notes": "Order confirmed by restaurant",
+        "updatedBy": "restaurant-3"
+      },
+      {
+        "status": "Preparing",
+        "timestamp": "2024-01-16T12:50:00Z",
+        "notes": "Pizza preparation started",
+        "updatedBy": "restaurant-3"
+      }
+    ],
+    "createdAt": "2024-01-16T12:45:00Z",
+    "updatedAt": "2024-01-16T12:50:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "order-3",
+    "userId": "user-1",
+    "restaurantId": "restaurant-5",
+    "orderNumber": "GP20240117003",
+    "status": "Cancelled",
+    "items": [
+      {
+        "menuItemId": "menu-6",
+        "menuItemName": "Classic Cheeseburger",
+        "quantity": 2,
+        "unitPrice": 250,
+        "totalPrice": 500,
+        "variant": "Double Patty",
+        "specialInstructions": "No pickles"
+      }
+    ],
+    "subTotal": 580,
+    "deliveryFee": 35,
+    "tax": 110.7,
+    "total": 725.7,
+    "deliveryAddress": {
+      "street": "123 MG Road",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "postalCode": "400001",
+      "country": "India",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    "paymentMethod": "CashOnDelivery",
+    "paymentId": "",
+    "estimatedDeliveryTime": "2024-01-17T19:30:00Z",
+    "deliveredAt": null,
+    "deliveryInstructions": "Call before delivery",
+    "deliveryPersonId": "",
+    "statusHistory": [
+      {
+        "status": "Pending",
+        "timestamp": "2024-01-17T18:45:00Z",
+        "notes": "Order created",
+        "updatedBy": "user-1"
+      },
+      {
+        "status": "Confirmed",
+        "timestamp": "2024-01-17T18:47:00Z",
+        "notes": "Order confirmed by restaurant",
+        "updatedBy": "restaurant-5"
+      },
+      {
+        "status": "Cancelled",
+        "timestamp": "2024-01-17T18:50:00Z",
+        "notes": "Order cancelled by user - change of mind",
+        "updatedBy": "user-1"
+      }
+    ],
+    "createdAt": "2024-01-17T18:45:00Z",
+    "updatedAt": "2024-01-17T18:50:00Z",
+    "isDeleted": false
+  }
+]

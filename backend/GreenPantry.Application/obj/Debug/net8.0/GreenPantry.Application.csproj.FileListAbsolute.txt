@@ -1,0 +1,63 @@
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.deps.json
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.dll
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.pdb
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.dll
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.pdb
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.AssemblyReference.cache
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfoInputs.cache
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfo.cs
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.CoreCompileInputs.cache
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.sourcelink.json
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPan.8DB8DED9.Up2Date
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.dll
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/refint/GreenPantry.Application.dll
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.pdb
+/home/rajeev/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/ref/GreenPantry.Application.dll
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.deps.json
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.dll
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.pdb
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.dll
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.pdb
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.AssemblyReference.cache
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfoInputs.cache
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfo.cs
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.CoreCompileInputs.cache
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.sourcelink.json
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPan.8DB8DED9.Up2Date
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.dll
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/refint/GreenPantry.Application.dll
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.pdb
+/home/raja/Projects/GreenPantry-/backend/GreenPantry.Application/obj/Debug/net8.0/ref/GreenPantry.Application.dll
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.deps.json
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.dll
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.pdb
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.dll
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.pdb
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.AssemblyReference.cache
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfoInputs.cache
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfo.cs
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.CoreCompileInputs.cache
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.sourcelink.json
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPan.8DB8DED9.Up2Date
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.dll
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/refint/GreenPantry.Application.dll
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.pdb
+/home/raja/Projects/R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/ref/GreenPantry.Application.dll
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.AssemblyReference.cache
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfoInputs.cache
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.AssemblyInfo.cs
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.csproj.CoreCompileInputs.cache
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.deps.json
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.dll
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Application.pdb
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.dll
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/bin/Debug/net8.0/GreenPantry.Domain.pdb
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPan.8DB8DED9.Up2Date
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.dll
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/refint/GreenPantry.Application.dll
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/GreenPantry.Application.pdb
+/home/raja/Projects/Rajeev's Pvt. Ltd./R's GreenPantry/backend/GreenPantry.Application/obj/Debug/net8.0/ref/GreenPantry.Application.dll

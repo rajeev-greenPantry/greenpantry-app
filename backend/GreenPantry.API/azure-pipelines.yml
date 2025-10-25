@@ -1,0 +1,303 @@
+# Azure DevOps Pipeline for GreenPantry Full Stack Application
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+
+variables:
+  buildConfiguration: 'Release'
+  azureSubscription: 'GreenPantryAzureConnection'
+  apiAppName: 'greenpantry-api'
+  frontendAppName: 'greenpantry-frontend'
+  resourceGroupName: 'GreenPantryRG'
+  cosmosDbAccount: 'greenpantry-cosmosdb'
+  location: 'East US'
+  dotNetVersion: '8.0.x'
+  nodeVersion: '18.x'
+
+stages:
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+  - job: BuildAPI
+    displayName: 'Build .NET Core API'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET 8 SDK'
+      inputs:
+        packageType: 'sdk'
+        version: '$(dotNetVersion)'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore packages'
+      inputs:
+        command: 'restore'
+        projects: '**/GreenPantry.API.csproj'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Build API'
+      inputs:
+        command: 'build'
+        projects: '**/GreenPantry.API.csproj'
+        arguments: '--configuration $(buildConfiguration) --no-restore'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Run API tests'
+      inputs:
+        command: 'test'
+        projects: '**/*Tests/*.csproj'
+        arguments: '--configuration $(buildConfiguration) --no-build --collect:"XPlat Code Coverage"'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish API'
+      inputs:
+        command: 'publish'
+        projects: '**/GreenPantry.API.csproj'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/api --no-build'
+        zipAfterPublish: false
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish API artifacts'
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)/api'
+        artifactName: 'api'
+
+  - job: BuildFrontend
+    displayName: 'Build React Frontend'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: NodeTool@0
+      displayName: 'Use Node.js $(nodeVersion)'
+      inputs:
+        versionSpec: '$(nodeVersion)'
+
+    - task: Npm@1
+      displayName: 'Install dependencies'
+      inputs:
+        command: 'ci'
+        workingDir: '$(System.DefaultWorkingDirectory)/frontend'
+
+    - task: Npm@1
+      displayName: 'Build frontend'
+      inputs:
+        command: 'run'
+        arguments: 'build'
+        workingDir: '$(System.DefaultWorkingDirectory)/frontend'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish frontend artifacts'
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/frontend/dist'
+        artifactName: 'frontend'
+
+- stage: DeployInfrastructure
+  displayName: 'Deploy Azure Infrastructure'
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - deployment: DeployInfrastructure
+    displayName: 'Deploy Infrastructure'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureCLI@2
+            displayName: 'Create Resource Group'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az group create --name $(resourceGroupName) --location "$(location)" --tags Environment=Production Project=GreenPantry
+
+          - task: AzureCLI@2
+            displayName: 'Create Cosmos DB Account'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az cosmosdb create \
+                  --name $(cosmosDbAccount)-$(Build.BuildId) \
+                  --resource-group $(resourceGroupName) \
+                  --locations regionName="$(location)" failoverPriority=0 \
+                  --default-consistency-level Session
+
+          - task: AzureCLI@2
+            displayName: 'Create App Service Plan'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az appservice plan create \
+                  --name $(apiAppName)-plan \
+                  --resource-group $(resourceGroupName) \
+                  --sku B1 \
+                  --is-linux
+
+          - task: AzureCLI@2
+            displayName: 'Create API Web App'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az webapp create \
+                  --resource-group $(resourceGroupName) \
+                  --plan $(apiAppName)-plan \
+                  --name $(apiAppName)-$(Build.BuildId) \
+                  --runtime "DOTNET|8.0"
+
+          - task: AzureCLI@2
+            displayName: 'Create Static Web App'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az staticwebapp create \
+                  --name $(frontendAppName)-$(Build.BuildId) \
+                  --resource-group $(resourceGroupName) \
+                  --location "$(location)" \
+                  --source "https://dev.azure.com/$(System.TeamFoundationCollectionUri)/$(System.TeamProject)/_git/$(Build.Repository.Name)" \
+                  --branch main \
+                  --app-location "/frontend" \
+                  --api-location "/backend/GreenPantry.API" \
+                  --output-location "dist"
+
+- stage: DeployAPI
+  displayName: 'Deploy API to Azure'
+  dependsOn: DeployInfrastructure
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - deployment: DeployAPI
+    displayName: 'Deploy API'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@1
+            displayName: 'Download API artifacts'
+            inputs:
+              artifactName: 'api'
+              downloadPath: '$(System.DefaultWorkingDirectory)'
+
+          - task: AzureCLI@2
+            displayName: 'Configure App Settings'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                # Get Cosmos DB connection details
+                COSMOS_ENDPOINT=$(az cosmosdb show --name $(cosmosDbAccount)-$(Build.BuildId) --resource-group $(resourceGroupName) --query documentEndpoint -o tsv)
+                COSMOS_KEY=$(az cosmosdb keys list --name $(cosmosDbAccount)-$(Build.BuildId) --resource-group $(resourceGroupName) --query primaryMasterKey -o tsv)
+                
+                # Configure app settings
+                az webapp config appsettings set \
+                  --name $(apiAppName)-$(Build.BuildId) \
+                  --resource-group $(resourceGroupName) \
+                  --settings \
+                    "CosmosDb__AccountEndpoint=$COSMOS_ENDPOINT" \
+                    "CosmosDb__AccountKey=$COSMOS_KEY" \
+                    "CosmosDb__DatabaseName=GreenPantryDb" \
+                    "ASPNETCORE_ENVIRONMENT=Production" \
+                    "JwtSettings__Secret=$(JWT_SECRET)" \
+                    "JwtSettings__Issuer=https://$(apiAppName)-$(Build.BuildId).azurewebsites.net" \
+                    "JwtSettings__Audience=https://$(frontendAppName)-$(Build.BuildId).azurestaticapps.net" \
+                    "PaymentProviders__Razorpay__ApiKey=$(RAZORPAY_API_KEY)" \
+                    "PaymentProviders__Razorpay__ApiSecret=$(RAZORPAY_API_SECRET)" \
+                    "PaymentProviders__Razorpay__WebhookSecret=$(RAZORPAY_WEBHOOK_SECRET)" \
+                    "PaymentProviders__Paytm__MerchantId=$(PAYTM_MERCHANT_ID)" \
+                    "PaymentProviders__Paytm__MerchantKey=$(PAYTM_MERCHANT_KEY)" \
+                    "PaymentProviders__PhonePe__MerchantId=$(PHONEPE_MERCHANT_ID)" \
+                    "PaymentProviders__PhonePe__SaltKey=$(PHONEPE_SALT_KEY)"
+
+          - task: AzureWebApp@1
+            displayName: 'Deploy to Azure Web App'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              appType: 'webAppLinux'
+              appName: '$(apiAppName)-$(Build.BuildId)'
+              resourceGroupName: '$(resourceGroupName)'
+              package: '$(System.DefaultWorkingDirectory)/api'
+              runtimeStack: 'DOTNET|8.0'
+              startUpCommand: 'dotnet GreenPantry.API.dll'
+
+- stage: DeployFrontend
+  displayName: 'Deploy Frontend to Azure'
+  dependsOn: DeployAPI
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - deployment: DeployFrontend
+    displayName: 'Deploy Frontend'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@1
+            displayName: 'Download frontend artifacts'
+            inputs:
+              artifactName: 'frontend'
+              downloadPath: '$(System.DefaultWorkingDirectory)'
+
+          - task: AzureCLI@2
+            displayName: 'Deploy to Static Web App'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                # Get deployment token
+                DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name $(frontendAppName)-$(Build.BuildId) --resource-group $(resourceGroupName) --query properties.token -o tsv)
+                
+                # Deploy using Azure Static Web Apps CLI
+                npm install -g @azure/static-web-apps-cli
+                swa deploy $(System.DefaultWorkingDirectory)/frontend --deployment-token $DEPLOYMENT_TOKEN
+
+- stage: ConfigureCustomDomain
+  displayName: 'Configure Custom Domain'
+  dependsOn: DeployFrontend
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - deployment: ConfigureDomain
+    displayName: 'Configure Domain'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureCLI@2
+            displayName: 'Configure Custom Domain'
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                # Add custom domain to Static Web App
+                az staticwebapp hostname set \
+                  --name $(frontendAppName)-$(Build.BuildId) \
+                  --resource-group $(resourceGroupName) \
+                  --hostname greenpantry.in
+                
+                # Add custom domain to API
+                az webapp config hostname add \
+                  --webapp-name $(apiAppName)-$(Build.BuildId) \
+                  --resource-group $(resourceGroupName) \
+                  --hostname api.greenpantry.in

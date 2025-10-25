@@ -1,0 +1,240 @@
+name: GreenPantry CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  AZURE_WEBAPP_NAME: greenpantry-api
+  AZURE_WEBAPP_PACKAGE_PATH: './backend/GreenPantry.API'
+  NODE_VERSION: '18.x'
+  DOTNET_VERSION: '8.0.x'
+  RESOURCE_GROUP: 'GreenPantryRG'
+  LOCATION: 'East US'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Install frontend dependencies
+      run: |
+        cd frontend
+        npm ci
+
+    - name: Build frontend
+      run: |
+        cd frontend
+        npm run build
+      env:
+        VITE_API_BASE_URL: https://api.greenpantry.in/api
+
+    - name: Restore .NET dependencies
+      run: |
+        cd backend/GreenPantry.API
+        dotnet restore
+
+    - name: Build .NET application
+      run: |
+        cd backend/GreenPantry.API
+        dotnet build --configuration Release --no-restore
+
+    - name: Run .NET tests
+      run: |
+        cd backend/GreenPantry.API
+        dotnet test --configuration Release --no-build --verbosity normal
+
+    - name: Publish .NET application
+      run: |
+        cd backend/GreenPantry.API
+        dotnet publish --configuration Release --output ./publish --no-build
+
+    - name: Upload API artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: api-artifacts
+        path: backend/GreenPantry.API/publish/
+
+    - name: Upload frontend artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: frontend-artifacts
+        path: frontend/dist/
+
+  deploy-infrastructure:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: 'Production'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create Resource Group
+      run: |
+        az group create --name ${{ env.RESOURCE_GROUP }} --location "${{ env.LOCATION }}" --tags Environment=Production Project=GreenPantry
+
+    - name: Create Cosmos DB Account
+      run: |
+        COSMOS_NAME="greenpantry-cosmosdb-${{ github.run_number }}"
+        az cosmosdb create \
+          --name $COSMOS_NAME \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --locations regionName="${{ env.LOCATION }}" failoverPriority=0 \
+          --default-consistency-level Session
+        echo "COSMOS_NAME=$COSMOS_NAME" >> $GITHUB_ENV
+
+    - name: Create App Service Plan
+      run: |
+        az appservice plan create \
+          --name greenpantry-api-plan \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --sku B1 \
+          --is-linux
+
+    - name: Create Web App
+      run: |
+        APP_NAME="${{ env.AZURE_WEBAPP_NAME }}-${{ github.run_number }}"
+        az webapp create \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --plan greenpantry-api-plan \
+          --name $APP_NAME \
+          --runtime "DOTNET|8.0"
+        echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
+
+    - name: Configure App Settings
+      run: |
+        COSMOS_ENDPOINT=$(az cosmosdb show --name ${{ env.COSMOS_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --query documentEndpoint -o tsv)
+        COSMOS_KEY=$(az cosmosdb keys list --name ${{ env.COSMOS_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --query primaryMasterKey -o tsv)
+        
+        az webapp config appsettings set \
+          --name ${{ env.APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --settings \
+            "CosmosDb__AccountEndpoint=$COSMOS_ENDPOINT" \
+            "CosmosDb__AccountKey=$COSMOS_KEY" \
+            "CosmosDb__DatabaseName=GreenPantryDb" \
+            "ASPNETCORE_ENVIRONMENT=Production" \
+            "JwtSettings__Secret=${{ secrets.JWT_SECRET }}" \
+            "JwtSettings__Issuer=https://${{ env.APP_NAME }}.azurewebsites.net" \
+            "JwtSettings__Audience=https://greenpantry.in" \
+            "PaymentProviders__Razorpay__ApiKey=${{ secrets.RAZORPAY_API_KEY }}" \
+            "PaymentProviders__Razorpay__ApiSecret=${{ secrets.RAZORPAY_API_SECRET }}" \
+            "PaymentProviders__Razorpay__WebhookSecret=${{ secrets.RAZORPAY_WEBHOOK_SECRET }}" \
+            "PaymentProviders__Paytm__MerchantId=${{ secrets.PAYTM_MERCHANT_ID }}" \
+            "PaymentProviders__Paytm__MerchantKey=${{ secrets.PAYTM_MERCHANT_KEY }}" \
+            "PaymentProviders__PhonePe__MerchantId=${{ secrets.PHONEPE_MERCHANT_ID }}" \
+            "PaymentProviders__PhonePe__SaltKey=${{ secrets.PHONEPE_SALT_KEY }}"
+
+  deploy-api:
+    needs: [build-and-test, deploy-infrastructure]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: 'Production'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download API artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: api-artifacts
+        path: ./api-artifacts
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}-${{ github.run_number }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ./api-artifacts
+
+  deploy-frontend:
+    needs: [build-and-test, deploy-api]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: 'Production'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download frontend artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: frontend-artifacts
+        path: ./frontend-dist
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create Static Web App
+      run: |
+        SWA_NAME="greenpantry-frontend-${{ github.run_number }}"
+        az staticwebapp create \
+          --name $SWA_NAME \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --location "${{ env.LOCATION }}" \
+          --source "https://github.com/${{ github.repository }}" \
+          --branch main \
+          --app-location "/frontend" \
+          --api-location "/backend/GreenPantry.API" \
+          --output-location "dist"
+        echo "SWA_NAME=$SWA_NAME" >> $GITHUB_ENV
+
+    - name: Deploy to Static Web App
+      run: |
+        DEPLOYMENT_TOKEN=$(az staticwebapp secrets list --name ${{ env.SWA_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --query properties.token -o tsv)
+        npm install -g @azure/static-web-apps-cli
+        swa deploy ./frontend-dist --deployment-token $DEPLOYMENT_TOKEN
+
+    - name: Configure Custom Domain
+      run: |
+        az staticwebapp hostname set \
+          --name ${{ env.SWA_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --hostname greenpantry.in
+
+  notify:
+    needs: [deploy-api, deploy-frontend]
+    runs-on: ubuntu-latest
+    if: always() && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Notify Deployment Status
+      run: |
+        if [ "${{ needs.deploy-api.result }}" == "success" ] && [ "${{ needs.deploy-frontend.result }}" == "success" ]; then
+          echo "✅ Deployment successful! GreenPantry is now live at https://greenpantry.in"
+        else
+          echo "❌ Deployment failed. Please check the logs."
+        fi

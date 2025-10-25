@@ -1,0 +1,80 @@
+[
+  {
+    "id": "restaurant-11",
+    "name": "Pizza Palace",
+    "description": "Authentic Italian pizzas with fresh ingredients and traditional wood-fired oven cooking",
+    "imageUrl": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "999 Hill Road, Bandra West",
+    "postalCode": "400050",
+    "latitude": 19.0544,
+    "longitude": 72.8406,
+    "phoneNumber": "+91-22-2640-9999",
+    "email": "info@pizzapalace.com",
+    "cuisineTypes": ["Italian"],
+    "rating": 4.6,
+    "reviewCount": 1800,
+    "deliveryFee": 60,
+    "estimatedDeliveryTime": 25,
+    "isActive": true,
+    "ownerId": "vendor-11",
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400",
+      "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400"
+    ],
+    "status": "Approved"
+  },
+  {
+    "id": "restaurant-12",
+    "name": "Sushi Express",
+    "description": "Fresh Japanese sushi and sashimi with premium ingredients and traditional preparation",
+    "imageUrl": "https://images.unsplash.com/photo-1579584421775-5c4d86c6a034?w=400",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "777 Marine Drive, Nariman Point",
+    "postalCode": "400021",
+    "latitude": 18.9333,
+    "longitude": 72.8333,
+    "phoneNumber": "+91-22-2202-7777",
+    "email": "info@sushiexpress.com",
+    "cuisineTypes": ["Japanese"],
+    "rating": 4.8,
+    "reviewCount": 2200,
+    "deliveryFee": 80,
+    "estimatedDeliveryTime": 35,
+    "isActive": true,
+    "ownerId": "vendor-12",
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1579584421775-5c4d86c6a034?w=400",
+      "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400"
+    ],
+    "status": "Approved"
+  },
+  {
+    "id": "restaurant-13",
+    "name": "Curry House",
+    "description": "Traditional South Indian cuisine with authentic flavors and fresh ingredients",
+    "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "555 MG Road, Andheri East",
+    "postalCode": "400069",
+    "latitude": 19.1136,
+    "longitude": 72.8697,
+    "phoneNumber": "+91-22-2624-5555",
+    "email": "info@curryhouse.com",
+    "cuisineTypes": ["Indian"],
+    "rating": 4.4,
+    "reviewCount": 950,
+    "deliveryFee": 45,
+    "estimatedDeliveryTime": 30,
+    "isActive": true,
+    "ownerId": "vendor-13",
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400",
+      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"
+    ],
+    "status": "Approved"
+  }
+]

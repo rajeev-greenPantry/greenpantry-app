@@ -1,0 +1,214 @@
+[
+  {
+    "id": "menu-11",
+    "restaurantId": "restaurant-11",
+    "name": "Margherita Pizza",
+    "description": "Classic Italian pizza with tomato sauce, fresh mozzarella, and basil",
+    "price": 450,
+    "imageUrl": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400",
+    "category": "Pizza",
+    "isVegetarian": true,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Gluten", "Dairy"],
+    "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella", "Fresh Basil", "Olive Oil"],
+    "preparationTime": 20,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Small (10\")",
+        "priceModifier": -100,
+        "isDefault": false
+      },
+      {
+        "name": "Medium (12\")",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Large (14\")",
+        "priceModifier": 100,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Classic", "Vegetarian", "Traditional"]
+  },
+  {
+    "id": "menu-12",
+    "restaurantId": "restaurant-11",
+    "name": "Pepperoni Pizza",
+    "description": "Spicy pepperoni with mozzarella cheese on traditional pizza dough",
+    "price": 520,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+    "category": "Pizza",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": false,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": ["Gluten", "Dairy", "Pork"],
+    "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella", "Pepperoni", "Oregano"],
+    "preparationTime": 22,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Small (10\")",
+        "priceModifier": -120,
+        "isDefault": false
+      },
+      {
+        "name": "Medium (12\")",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Large (14\")",
+        "priceModifier": 120,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Spicy", "Meat", "Popular"]
+  },
+  {
+    "id": "menu-13",
+    "restaurantId": "restaurant-12",
+    "name": "Salmon Sashimi",
+    "description": "Fresh Atlantic salmon sliced thin and served with wasabi and soy sauce",
+    "price": 680,
+    "imageUrl": "https://images.unsplash.com/photo-1579584421775-5c4d86c6a034?w=400",
+    "category": "Sashimi",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Fish", "Soy"],
+    "ingredients": ["Fresh Salmon", "Wasabi", "Soy Sauce", "Ginger", "Radish"],
+    "preparationTime": 15,
+    "isAvailable": true,
+    "stockQuantity": 20,
+    "variants": [
+      {
+        "name": "6 Pieces",
+        "priceModifier": -150,
+        "isDefault": false
+      },
+      {
+        "name": "8 Pieces",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "12 Pieces",
+        "priceModifier": 200,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Fresh", "Premium", "Raw"]
+  },
+  {
+    "id": "menu-14",
+    "restaurantId": "restaurant-12",
+    "name": "California Roll",
+    "description": "Crab, avocado, and cucumber rolled in seaweed and rice",
+    "price": 320,
+    "imageUrl": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400",
+    "category": "Sushi",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": false,
+    "spiceLevel": 0,
+    "allergens": ["Shellfish", "Soy"],
+    "ingredients": ["Sushi Rice", "Crab", "Avocado", "Cucumber", "Seaweed", "Sesame"],
+    "preparationTime": 12,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "6 Pieces",
+        "priceModifier": -80,
+        "isDefault": false
+      },
+      {
+        "name": "8 Pieces",
+        "priceModifier": 0,
+        "isDefault": true
+      }
+    ],
+    "tags": ["Popular", "Creamy", "Fresh"]
+  },
+  {
+    "id": "menu-15",
+    "restaurantId": "restaurant-13",
+    "name": "Masala Dosa",
+    "description": "Crispy rice crepe filled with spiced potato mixture, served with sambar and coconut chutney",
+    "price": 180,
+    "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400",
+    "category": "Main Course",
+    "isVegetarian": true,
+    "isVegan": true,
+    "isGlutenFree": true,
+    "isSpicy": true,
+    "spiceLevel": 2,
+    "allergens": [],
+    "ingredients": ["Rice Flour", "Potatoes", "Onions", "Turmeric", "Mustard Seeds", "Curry Leaves"],
+    "preparationTime": 25,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Regular",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Extra Spicy",
+        "priceModifier": 20,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Traditional", "Spicy", "Vegan", "Popular"]
+  },
+  {
+    "id": "menu-16",
+    "restaurantId": "restaurant-13",
+    "name": "Chicken Curry",
+    "description": "Tender chicken pieces in rich coconut curry with aromatic spices",
+    "price": 280,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+    "category": "Main Course",
+    "isVegetarian": false,
+    "isVegan": false,
+    "isGlutenFree": true,
+    "isSpicy": true,
+    "spiceLevel": 3,
+    "allergens": ["Dairy"],
+    "ingredients": ["Chicken", "Coconut Milk", "Onions", "Tomatoes", "Ginger", "Garlic", "Curry Leaves"],
+    "preparationTime": 35,
+    "isAvailable": true,
+    "stockQuantity": -1,
+    "variants": [
+      {
+        "name": "Mild",
+        "priceModifier": 0,
+        "isDefault": false
+      },
+      {
+        "name": "Medium",
+        "priceModifier": 0,
+        "isDefault": true
+      },
+      {
+        "name": "Extra Spicy",
+        "priceModifier": 30,
+        "isDefault": false
+      }
+    ],
+    "tags": ["Spicy", "Coconut", "Traditional", "Comfort Food"]
+  }
+]

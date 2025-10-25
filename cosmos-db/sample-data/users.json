@@ -1,0 +1,98 @@
+[
+  {
+    "id": "user-1",
+    "firstName": "Rajesh",
+    "lastName": "Kumar",
+    "email": "rajesh.kumar@email.com",
+    "phoneNumber": "+91-9876543210",
+    "passwordHash": "$2a$11$example.hash.for.password123",
+    "role": "User",
+    "isEmailVerified": true,
+    "refreshToken": "",
+    "refreshTokenExpiryTime": null,
+    "address": {
+      "street": "123 MG Road",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "postalCode": "400001",
+      "country": "India",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T10:30:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "user-2",
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "email": "priya.sharma@email.com",
+    "phoneNumber": "+91-9876543211",
+    "passwordHash": "$2a$11$example.hash.for.password123",
+    "role": "User",
+    "isEmailVerified": true,
+    "refreshToken": "",
+    "refreshTokenExpiryTime": null,
+    "address": {
+      "street": "456 Brigade Road",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "postalCode": "560001",
+      "country": "India",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    "createdAt": "2024-01-16T11:45:00Z",
+    "updatedAt": "2024-01-16T11:45:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "vendor-1",
+    "firstName": "Amit",
+    "lastName": "Patel",
+    "email": "amit.patel@restaurant.com",
+    "phoneNumber": "+91-9876543212",
+    "passwordHash": "$2a$11$example.hash.for.password123",
+    "role": "Vendor",
+    "isEmailVerified": true,
+    "refreshToken": "",
+    "refreshTokenExpiryTime": null,
+    "address": {
+      "street": "789 Commercial Street",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "postalCode": "400002",
+      "country": "India",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    "createdAt": "2024-01-10T09:15:00Z",
+    "updatedAt": "2024-01-10T09:15:00Z",
+    "isDeleted": false
+  },
+  {
+    "id": "admin-1",
+    "firstName": "Admin",
+    "lastName": "User",
+    "email": "admin@greenpantry.com",
+    "phoneNumber": "+91-9876543213",
+    "passwordHash": "$2a$11$example.hash.for.password123",
+    "role": "Admin",
+    "isEmailVerified": true,
+    "refreshToken": "",
+    "refreshTokenExpiryTime": null,
+    "address": {
+      "street": "Corporate Office",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "postalCode": "400001",
+      "country": "India",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z",
+    "isDeleted": false
+  }
+]
