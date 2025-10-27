@@ -145,7 +145,8 @@ const Header = () => {
                 </div>
               )}
                 </div>
-              <div className="hidden md:flex items-center mr-[-31rem] ml-5">
+              {/* Hidden: Back to Portal Button */}
+              {/* <div className="hidden md:flex items-center mr-[-31rem] ml-5">
                 <Link
                   to={URLS.MAIN_PORTAL}
                   rel="noopener noreferrer"
@@ -155,7 +156,7 @@ const Header = () => {
                   <ArrowLeft className="w-4 h-4" />
                   <span className="hidden lg:inline">Back to Portal</span>
                 </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
