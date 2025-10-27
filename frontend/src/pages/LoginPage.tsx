@@ -63,7 +63,7 @@ const LoginPage = () => {
               src="/GreenPantry logo.png"
               alt="GreenPantry"
               onError={(e) => {
-                console.log('Logo failed to load:', e);
+                // Removed console log
                 e.currentTarget.src = '/GreenPantry logo.png';
               }}
             />
@@ -148,9 +148,9 @@ const LoginPage = () => {
             </div>
 
             <div className="text-sm">
-              <a href="#" className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
+              <Link to="/forgot-password" className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 

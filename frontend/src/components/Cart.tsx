@@ -13,9 +13,8 @@ const Cart = () => {
     setShowCheckout(true)
   }
 
-  const handleOrderSuccess = (orderId: string) => {
-    console.log('Order placed successfully:', orderId)
-    // You can add additional success handling here
+  const handleOrderSuccess = () => {
+    // Order placed successfully
   }
 
   return (

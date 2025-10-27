@@ -242,7 +242,7 @@ const RegisterPage = () => {
               src="/GreenPantry logo.png"
               alt="GreenPantry"
               onError={(e) => {
-                console.log('Logo failed to load:', e);
+                // Removed console log
                 e.currentTarget.src = '/GreenPantry logo.png';
               }}
             />

@@ -31,6 +31,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IPaytmPaymentService, PaytmPaymentService>();
         services.AddScoped<IPhonePePaymentService, PhonePePaymentService>();
 
+        // Add email service
+        services.AddScoped<EmailService>();
+
         return services;
     }
 }

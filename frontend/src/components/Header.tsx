@@ -1,12 +1,11 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { User, LogOut, Search, Menu, X, Sun, Moon, ArrowLeft } from 'lucide-react'
+import { User, LogOut, Search, Menu, X, Sun, Moon } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
 import SidebarContent from './SidebarContent'
 import Cart from './Cart'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { URLS } from '../config/urls'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -73,7 +72,6 @@ const Header = () => {
                   alt="GreenPantry Logo"
                   className="header-logo-image"
                   onError={(e) => {
-                    console.log('Logo failed to load:', e);
                     e.currentTarget.src = '/GreenPantry logo.png';
                   }}
                 />

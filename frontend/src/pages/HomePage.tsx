@@ -5,7 +5,6 @@ import RestaurantCard from '../components/RestaurantCard'
 import HeroSection from '../components/HeroSection'
 import CuisineFilter from '../components/CuisineFilter'
 import LoadingSpinner from '../components/LoadingSpinner'
-import { CartTest } from '../components/CartTest'
 
 const HomePage = () => {
   const { data: restaurants, isLoading, error } = useQuery({
@@ -33,17 +32,6 @@ const HomePage = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <HeroSection />
-
-      {/* Cart Integration Test - Remove this in production */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-          <h3 className="text-lg font-semibold text-yellow-800 mb-2">🧪 Cart & Payment Integration Test</h3>
-          <p className="text-yellow-700 text-sm mb-4">
-            Test the dynamic cart amount binding with payment integration. Add items to cart and test checkout flow.
-          </p>
-          <CartTest />
-        </div>
-      </div>
 
       {/* Cuisine Filter */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

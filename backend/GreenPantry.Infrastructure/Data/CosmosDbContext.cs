@@ -14,7 +14,9 @@ public class CosmosDbContext
     {
         _logger = logger;
         
-        var connectionString = configuration["CosmosDb:ConnectionString"];
+        // Try both CosmosDb:ConnectionString and ConnectionStrings:DefaultConnection
+        var connectionString = configuration["CosmosDb:ConnectionString"] 
+            ?? configuration["ConnectionStrings:DefaultConnection"];
         var databaseName = configuration["CosmosDb:DatabaseName"];
 
         if (string.IsNullOrEmpty(connectionString) || string.IsNullOrEmpty(databaseName))

@@ -1,11 +1,14 @@
 // URL Configuration for all applications
+// Use environment variable for production, fallback to localhost for development
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7001';
+
 export const URLS = {
   // Main Portal
   MAIN_PORTAL: 'http://localhost:3000',
   
   // GreenPantry
-  GREENPANTRY_UI: 'http://localhost:3001',
-  GREENPANTRY_API: 'http://localhost:5001',
+  GREENPANTRY_UI: import.meta.env.VITE_GREENPANTRY_UI || 'http://localhost:3001',
+  GREENPANTRY_API: API_BASE_URL.replace('/api', '') || 'http://localhost:7001',
   
   // Restaurants
   RESTAURANTS_UI: 'http://localhost:3002',

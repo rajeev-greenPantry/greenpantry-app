@@ -19,17 +19,20 @@ public class AuthService : IAuthService
     private readonly IMapper _mapper;
     private readonly IConfiguration _configuration;
     private readonly ILogger<AuthService> _logger;
+    private readonly EmailService _emailService;
 
     public AuthService(
         IUserRepository userRepository,
         IMapper mapper,
         IConfiguration configuration,
-        ILogger<AuthService> logger)
+        ILogger<AuthService> logger,
+        EmailService emailService)
     {
         _userRepository = userRepository;
         _mapper = mapper;
         _configuration = configuration;
         _logger = logger;
+        _emailService = emailService;
     }
 
     private string HashPassword(string password)
@@ -108,7 +111,7 @@ public class AuthService : IAuthService
         try
         {
             var user = await _userRepository.GetByEmailAsync(request.Email.ToLowerInvariant());
-            if (user == null || user.PasswordHash != request.Password)
+            if (user == null || !VerifyPassword(request.Password, user.PasswordHash))
             {
                 throw new UnauthorizedAccessException("Invalid email or password");
             }
@@ -242,5 +245,105 @@ public class AuthService : IAuthService
     private static string GenerateRefreshToken()
     {
         return Guid.NewGuid().ToString();
+    }
+
+    public async Task RequestPasswordResetAsync(string email)
+    {
+        _logger.LogInformation("Password reset request for email: {Email}", email);
+
+        var user = await _userRepository.GetByEmailAsync(email.ToLowerInvariant());
+        
+        // Always return success to prevent email enumeration
+        if (user == null)
+        {
+            _logger.LogWarning("Password reset requested for non-existent email: {Email}", email);
+            return;
+        }
+
+        if (!user.IsActive)
+        {
+            _logger.LogWarning("Password reset requested for inactive account: {Email}", email);
+            return;
+        }
+
+        // Generate reset token
+        var resetToken = Guid.NewGuid().ToString();
+        user.PasswordResetToken = resetToken;
+        user.PasswordResetTokenExpiryTime = DateTime.UtcNow.AddHours(1);
+        
+        await _userRepository.UpdateAsync(user);
+        
+        // Log reset link for testing (will be removed in production)
+        var resetLink = $"https://azure.greenpantry.in/reset-password?token={resetToken}&userId={user.Id}";
+        _logger.LogWarning("🔐 RESET LINK: {ResetLink}", resetLink);
+        
+        // Send email
+        try
+        {
+            await _emailService.SendPasswordResetEmailAsync(user.Email, resetToken, user.Id);
+            _logger.LogInformation("Password reset email sent to: {Email}", email);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to send password reset email to: {Email}. Error: {Error}", email, ex.Message);
+            // Don't throw - still return success to prevent email enumeration
+            // Email functionality can be configured later with proper SMTP credentials
+        }
+    }
+
+    public async Task<bool> ResetPasswordAsync(string userId, string token, string newPassword)
+    {
+        _logger.LogInformation("Password reset attempt for user: {UserId}", userId);
+
+        var user = await _userRepository.GetByIdAsync(userId);
+        
+        if (user == null)
+        {
+            _logger.LogWarning("Password reset failed: User not found: {UserId}", userId);
+            return false;
+        }
+
+        if (user.PasswordResetToken != token)
+        {
+            _logger.LogWarning("Password reset failed: Invalid token for user: {UserId}", userId);
+            return false;
+        }
+
+        if (user.PasswordResetTokenExpiryTime == null || user.PasswordResetTokenExpiryTime < DateTime.UtcNow)
+        {
+            _logger.LogWarning("Password reset failed: Token expired for user: {UserId}", userId);
+            return false;
+        }
+
+        // Update password
+        user.PasswordHash = HashPassword(newPassword);
+        user.PasswordResetToken = null;
+        user.PasswordResetTokenExpiryTime = null;
+        
+        await _userRepository.UpdateAsync(user);
+        
+        _logger.LogInformation("Password reset successful for user: {UserId}", userId);
+        return true;
+    }
+
+    public async Task ResetPasswordDirectlyAsync(string userId, string newPassword)
+    {
+        _logger.LogInformation("Direct password reset for user: {UserId}", userId);
+
+        var user = await _userRepository.GetByIdAsync(userId);
+
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found");
+        }
+
+        // Update password
+        user.PasswordHash = HashPassword(newPassword);
+        user.PasswordResetToken = null;
+        user.PasswordResetTokenExpiryTime = null;
+
+        await _userRepository.UpdateAsync(user);
+
+        _logger.LogInformation("Direct password reset successful for user: {UserId}", userId);
     }
 }

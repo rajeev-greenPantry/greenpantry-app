@@ -14,6 +14,8 @@ public class User : BaseEntity
     public bool IsActive { get; set; } = true;
     public string RefreshToken { get; set; } = string.Empty;
     public DateTime? RefreshTokenExpiryTime { get; set; }
+    public string? PasswordResetToken { get; set; }
+    public DateTime? PasswordResetTokenExpiryTime { get; set; }
     public Address? Address { get; set; }
 }
 

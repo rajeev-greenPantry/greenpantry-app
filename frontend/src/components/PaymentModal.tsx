@@ -56,7 +56,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
     } else {
       // Handle card payments - redirect to payment gateway
       // This would typically open a payment gateway in a new window or redirect
-      console.log('Card payment selected - implement payment gateway integration')
+      alert('Card payment integration pending')
     }
   }
 
