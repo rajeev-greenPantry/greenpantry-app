@@ -85,3 +85,14 @@ jspm_packages/
 
 # DynamoDB Local files
 .dynamodb/
+
+# .NET build artifacts
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+
+# .NET appsettings (keep template files but not actual configs with secrets)
+**/bin/**/appsettings*.json
+**/obj/

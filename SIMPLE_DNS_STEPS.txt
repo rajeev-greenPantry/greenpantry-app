@@ -1,0 +1,42 @@
+╔════════════════════════════════════════════════════════════════╗
+║  Simple DNS Setup for greenpantry.in                           ║
+╚════════════════════════════════════════════════════════════════╝
+
+STEP 1: Login to GoDaddy
+  → Go to: https://www.godaddy.com
+  → Login with your account
+
+STEP 2: Find Your Domain
+  → Click "My Products"
+  → Click on "greenpantry.in"
+  → Click "DNS" or "Manage DNS"
+
+STEP 3: Add These 2 Records
+
+  RECORD #1 (TXT - Verification):
+  ┌─────────────────────────────────────────┐
+  │ Type:  TXT                              │
+  │ Name:  @                                │
+  │ Value: _mojjfavjbepxjffa163raf72mv9ufue │
+  │ TTL:   600                              │
+  └─────────────────────────────────────────┘
+
+  RECORD #2 (CNAME - Point to Azure):
+  ┌────────────────────────────────────────────────────────────┐
+  │ Type:  CNAME                                                │
+  │ Name:  @                                                    │
+  │ Value: salmon-stone-02e25c50f.3.azurestaticapps.net        │
+  │ TTL:   600                                                 │
+  └────────────────────────────────────────────────────────────┘
+
+STEP 4: Wait
+  → DNS changes take 5-60 minutes
+  → Then visit: https://greenpantry.in
+
+STEP 5: Verify (Optional - run after 10 minutes)
+  → I can help you check if it's working
+  → Run this command to test:
+      curl -I https://greenpantry.in
+
+DONE! Your site will be live at:
+  https://greenpantry.in
